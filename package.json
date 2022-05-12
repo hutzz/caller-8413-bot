@@ -1,0 +1,21 @@
+{
+	"name": "caller-8413-bot",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.ts",
+	"dependencies": {
+		"@types/node": "^17.0.32",
+		"discord.js": "^13.6.0",
+		"dotenv": "^16.0.1",
+		"nodemon": "^2.0.16",
+		"typescript": "^4.6.4"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"build": "tsc",
+		"start": "node build/index.js",
+		"dev": "\"nodemon build/src/index.ts\""
+	},
+	"author": "zhutz",
+	"license": "ISC"
+}
