@@ -16,9 +16,10 @@
 		"removeComments": true,
 		"typeRoots": ["node_modules/@types"],
 		"sourceMap": false,
-		"baseUrl": "./"
+		"baseUrl": "./",
+		"allowJs": true
 	},
-	"files": ["src/index.ts", "environment.d.ts"],
+	"files": ["src/index.ts"],
 	"include": ["./**/*.ts"],
 	"exclude": ["node_modules", "dist"]
 }
