@@ -4,6 +4,7 @@ import config from "./config";
 import Brady from "./Responses/Brady";
 import Dud, { dudQuotes } from "./Responses/Dud";
 
+import Help from "./Responses/Help";
 import coinsWrapper from "./Crypto/crypto";
 
 import Author from "./Interface/IAuthor";
@@ -33,6 +34,10 @@ client.on("messageCreate", async (message) => {
 	)
 		await Dud(message, name, id);
 	// commands
+	if (message.content === "$help") {
+		console.log("Help invoked");
+		await Help(message, name, id);
+	}
 	if (message.content === "$ping") {
 		// simple command - replies with pong
 		console.log("Ping invoked");
