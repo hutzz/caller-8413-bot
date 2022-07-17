@@ -10,6 +10,7 @@
 		"discord.js": "^13.6.0",
 		"dotenv": "^16.0.1",
 		"nodemon": "^2.0.16",
+		"prompt-sync": "^4.2.0",
 		"typescript": "^4.6.4"
 	},
 	"scripts": {
@@ -20,6 +21,7 @@
 	"author": "zhutz",
 	"license": "ISC",
 	"devDependencies": {
-		"@types/coingecko-api": "^1.0.10"
+		"@types/coingecko-api": "^1.0.10",
+		"@types/prompt-sync": "^4.1.1"
 	}
 }
