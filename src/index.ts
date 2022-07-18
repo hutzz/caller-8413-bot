@@ -56,7 +56,7 @@ client.on("messageCreate", async (message) => {
 	}
 	if (
 		authorInfo.id === "365938029640024064" &&
-		message.content.match(cadenQuotes) !== null
+		message.content.toLowerCase().match(cadenQuotes) !== null
 	) {
 		console.log("caden's talking about working out again");
 		await message.reply("we get it dude you work out");
