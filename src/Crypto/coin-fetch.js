@@ -32,7 +32,7 @@ const formatString = (arr) => {
 };
 
 // get raw data and extract useful data into an array of objects
-const Coins = async () => {
+const coins = async () => {
 	let coinData = await CoinGeckoClient.coins.markets({
 		ids: ["bitcoin, ethereum, monero, algorand, cosmos, chainlink"],
 		vs_currency: "cad",
@@ -47,4 +47,4 @@ const Coins = async () => {
 	console.log(formatString(usefulData));
 	return formatString(usefulData);
 };
-export default Coins;
+export default coins;

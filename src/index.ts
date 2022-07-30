@@ -1,12 +1,13 @@
 import { Client, TextChannel } from "discord.js";
+
+import responses from "./Responses/responses";
+
 import config from "./config";
 
-import Brady from "./Responses/Brady";
-import Rant from "./Responses/Rant";
-import { cadenQuotes } from "./Responses/Caden";
-
-import Help from "./Responses/Help";
+import help from "./Responses/help";
 import coinsWrapper from "./Crypto/crypto";
+
+import { Flag } from "./Helper/feature-flags";
 
 export const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
@@ -23,43 +24,33 @@ client.on("messageCreate", async (message) => {
 		id: message.author.id,
 		name: message.author.username,
 	};
+
+	responses(message, authorInfo);
+
 	const { id, name } = authorInfo;
-	if (
-		message.content.toLowerCase() === "yo" &&
-		authorInfo.id !== config.CLIENT_ID
-	)
-		await Brady(message, name, id);
-	if (message.content === "<rant>") await Rant(message, name, id);
 
 	// commands
-	if (message.content === "$help") {
+	if (message.content === "$help" && Flag.HELP) {
 		console.log("Help invoked");
-		await Help(message, name, id);
+		await help(message, name, id);
 	}
-	if (message.content === "$ping") {
+	if (message.content === "$ping" && Flag.PING) {
 		// simple command - replies with pong
 		console.log("Ping invoked");
 		await message.reply("pong");
 	}
 
-	if (message.content === "$crypto") {
+	if (message.content === "$crypto" && Flag.CRYPTO) {
 		// replies with data on certain notable cryptocurrencies
 		console.log("Crypto invoked");
 		await message.reply(await coinsWrapper());
 	}
-	if (message.content === "$persistentcrypto") {
+	if (message.content === "$persistentcrypto" && Flag.PERSISTENTCRYPTO) {
 		console.log("Persistent crypto invoked");
 		const msg = await channel.send(await coinsWrapper());
 		setInterval(async () => {
 			msg.edit(await coinsWrapper());
 		}, 15000);
-	}
-	if (
-		authorInfo.id === "365938029640024064" &&
-		message.content.toLowerCase().match(cadenQuotes) !== null
-	) {
-		console.log("caden's talking about working out again");
-		await message.reply("we get it dude you work out");
 	}
 });
 client.login(config.DISCORD_TOKEN);

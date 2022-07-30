@@ -1,4 +1,4 @@
-const Help = async (message: any, id: string, name: string) => {
+const help = async (message: any, id: string, name: string) => {
 	console.log(`author: ${name}`);
 	console.log(`id: ${id}`);
 	let str =
@@ -7,4 +7,4 @@ const Help = async (message: any, id: string, name: string) => {
 		"\n```";
 	await message.reply({ content: str });
 };
-export default Help;
+export default help;

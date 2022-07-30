@@ -1,7 +1,6 @@
-import Coins from "./CoinFetch";
-// index.ts won't let me import CoinFetch... but this will apparently
+import coins from "./coin-fetch";
 const coinsWrapper = async () => {
-	const hold = await Coins();
+	const hold = await coins();
 	return hold;
 };
 export default coinsWrapper;
