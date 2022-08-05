@@ -1,4 +1,6 @@
-const rant = async (message: any, name: string, id: string) => {
+import { Message } from "discord.js";
+
+const rant = async (message: Message<boolean>, name: string, id: string) => {
 	console.log("messageCreate: rant");
 	console.log(`author: ${name}`);
 	console.log(`id: ${id}`);

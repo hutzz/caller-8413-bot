@@ -2,8 +2,9 @@ import brady from "./brady";
 import rant from "./rant";
 import * as pattern from "../Helper/patterns";
 import config from "../config";
+import { Message } from "discord.js";
 
-const responses = async (message: any, authorInfo: any) => {
+const responses = async (message: Message<boolean>, authorInfo: any) => {
 	const { id, name } = authorInfo;
 	if (
 		message.content.toLowerCase() === "yo" &&
@@ -24,6 +25,11 @@ const responses = async (message: any, authorInfo: any) => {
 	) {
 		console.log("reddit moment observed");
 		await message.reply("reddit moment");
+	}
+	if (message.content.startsWith("yea") && id === "828682307757015071") {
+		let resp = await message.reply("delete your message that's what");
+		setTimeout(() => message.delete(), 1000);
+		setTimeout(() => resp.delete(), 1000);
 	}
 };
 export default responses;
