@@ -3,4 +3,5 @@ export const Flag: any = {
 	PING: true,
 	CRYPTO: true,
 	PERSISTENTCRYPTO: false,
+	MP4: true,
 };

@@ -10,7 +10,6 @@ client.once("ready", () => {
 });
 
 client.on("messageCreate", async (message) => {
-	// replies
 	const channel = client.channels.cache.get(
 		"973733038322221057"
 	) as TextChannel;
