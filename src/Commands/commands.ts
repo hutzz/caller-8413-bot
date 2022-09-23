@@ -2,7 +2,7 @@ import { BaseGuildTextChannel, Message } from "discord.js";
 import help from "../Responses/help";
 import coinsWrapper from "../Crypto/crypto";
 import { Flag } from "../Helper/feature-flags";
-import { httpGet, httpPost } from "../Helper/httpRequests";
+import { httpGet, httpPost } from "../Helper/http-requests";
 import fs from "fs";
 
 const commands = async (
