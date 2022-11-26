@@ -1,4 +1,6 @@
 import { BaseGuildTextChannel, Message } from "discord.js";
+import { SlashCommandBuilder } from "@discordjs/builders";
+import { REST } from "@discordjs/rest";
 import help from "../Responses/help";
 import coinsWrapper from "../Crypto/crypto";
 import { Flag } from "../Helper/feature-flags";
@@ -21,7 +23,6 @@ const commands = async (
 			console.log("Ping invoked");
 			await message.reply("pong");
 		}
-
 		if (message.content === "$crypto" && Flag.CRYPTO) {
 			console.log("Crypto invoked");
 			await message.reply(await coinsWrapper());
