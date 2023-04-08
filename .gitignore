@@ -10,3 +10,6 @@
 # production
 /build
 /dist
+
+# other
+src/deploy-commands.ts
