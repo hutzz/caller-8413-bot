@@ -1,15 +1,22 @@
-import { Client, TextChannel } from "discord.js";
-import responses from "./Responses/responses";
+import { Client, CommandInteraction, TextChannel } from "discord.js";
+import responses from "./responses/responses";
 import config from "./config";
-import commands from "./Commands/commands";
 
 export const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
+
+const slashCommands = [
+	require("./commands/help"),
+	require("./commands/ping"),
+	require("./commands/mp4"),
+	require("./commands/mp3"),
+	require("./Commands/ram_map"),
+];
 
 client.once("ready", () => {
 	console.log("Caller-8413 is online.");
 });
 
-client.on("messageCreate", async (message) => {
+client.on("messageCreate", async (message: any) => {
 	const channel = client.channels.cache.get(
 		"973733038322221057"
 	) as TextChannel;
@@ -18,6 +25,19 @@ client.on("messageCreate", async (message) => {
 		name: message.author.username,
 	};
 	responses(message, authorInfo);
-	commands(message, authorInfo, channel);
+});
+client.on("interactionCreate", async (interaction: any) => {
+	console.log("interaction");
+	if (!interaction.isCommand()) return;
+	const command: any = slashCommands.find(
+		(command) => command.data.name === interaction.commandName
+	);
+	if (!command) return;
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.log(error);
+		await interaction.reply("error");
+	}
 });
 client.login(config.DISCORD_TOKEN);
