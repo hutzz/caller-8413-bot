@@ -26,6 +26,8 @@ module.exports = {
 				await interaction.editReply({ files: [path] });
 				fs.unlinkSync(path);
 			}
+		} else {
+			await interaction.reply("that's not a youtube url u fool");
 		}
 	},
 };
