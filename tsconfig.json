@@ -20,6 +20,6 @@
 		"allowJs": true
 	},
 	"files": ["src/index.ts"],
-	"include": ["./**/*.ts", "src/Helper/feature-flags.ts"],
+	"include": ["./**/*.ts", "src/helper/feature-flags.ts"],
 	"exclude": ["node_modules", "dist"]
 }
