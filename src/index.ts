@@ -1,4 +1,4 @@
-import { Client, CommandInteraction, TextChannel } from "discord.js";
+import { Client, TextChannel } from "discord.js";
 import responses from "./responses/responses";
 import config from "./config";
 
@@ -10,6 +10,7 @@ const slashCommands = [
 	require("./commands/mp4"),
 	require("./commands/mp3"),
 	require("./Commands/ram_map"),
+	require("./commands/abbie_job_count"),
 ];
 
 client.once("ready", () => {
@@ -26,6 +27,7 @@ client.on("messageCreate", async (message: any) => {
 	};
 	responses(message, authorInfo);
 });
+
 client.on("interactionCreate", async (interaction: any) => {
 	console.log("interaction");
 	if (!interaction.isCommand()) return;
