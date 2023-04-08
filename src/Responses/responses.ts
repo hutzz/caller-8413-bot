@@ -1,7 +1,5 @@
 import { Message } from "discord.js";
-import brady from "./brady";
-import rant from "./rant";
-import * as pattern from "../Helper/patterns";
+import * as pattern from "../helper/patterns";
 import config from "../config";
 
 const responses = async (message: Message<boolean>, authorInfo: any) => {
@@ -11,9 +9,20 @@ const responses = async (message: Message<boolean>, authorInfo: any) => {
 			if (
 				message.content.toLowerCase() === "yo" &&
 				authorInfo.id !== config.CLIENT_ID
-			)
-				await brady(message, name, id);
-			if (message.content === "<rant>") await rant(message, name, id);
+			) {
+				console.log("messageCreate: brady");
+				console.log(`author: ${name}`);
+				console.log(`id: ${id}`);
+				await message.reply("WHAT'S UP BRADY?");
+			}
+			if (message.content === "<rant>") {
+				console.log("messageCreate: rant");
+				console.log(`author: ${name}`);
+				console.log(`id: ${id}`);
+				await message.reply(
+					"I understand that I may be gifted with these sorts of things, and as such I'm not an example of a typical peer, but I've had this assignment done since like 3 days after it came out. 2 weeks should be ample time for anyone to do it. If not, you need to learn valuable skills like reading documentation (I posted a link to JavaCUP documentation, it's in the pins) and googling effectively (a simple google search for JLex help will eventually point you do Princeton U's amazing documentation). If you can't google and read documentation, you will not make it in software development."
+				);
+			}
 			if (message.content.match(pattern.redditMoment)) {
 				console.log("reddit moment observed");
 				await message.reply("reddit moment");
