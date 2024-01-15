@@ -1,0 +1,8 @@
+version: "1.0"
+services:
+  node:
+    build: .
+    ports:
+      - 9001:9001
+    volumes:
+      - .:/caller8413bot
