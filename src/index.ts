@@ -9,7 +9,7 @@ const slashCommands = [
 	require("./commands/ping"),
 	require("./commands/mp4"),
 	require("./commands/mp3"),
-	require("./Commands/ram_map"),
+	require("./commands/ram_map"),
 	require("./commands/abbie_job_count"),
 ];
 
