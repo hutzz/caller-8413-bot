@@ -5,4 +5,12 @@ services:
     ports:
       - 9001:9001
     volumes:
-      - .:/caller8413bot
+      - c8413:/caller8413bot
+    networks:
+      - c8413
+volumes:
+  c8413:
+networks:
+  c8413:
+    external: true
+    driver: bridge
