@@ -21,10 +21,11 @@ module.exports = {
 				)
 		),
 	async execute(interaction: CommandInteraction) {
+		const baseUrl = "http://caller-8413-backend-server-1:5000/";
 		try {
 			await interaction.deferReply();
 			if (!interaction.options.getString("action")) {
-				const url = "http://127.0.0.1:5000/";
+				const url = baseUrl;
 				const data = await httpGet(url);
 				await interaction.editReply("current abbie job count is " + data);
 			} else {
@@ -33,11 +34,11 @@ module.exports = {
 					interaction.options.getInteger("number"),
 				];
 				if (args[0] === "add" && args[1]) {
-					const url = "http://127.0.0.1:5000/addjob";
+					const url = baseUrl + "addjob";
 					const data = await httpPost(url, args[1]);
 					await interaction.editReply("updated job count is " + data);
 				} else if (args[0] === "remove") {
-					const url = "http://127.0.0.1:5000/deletejob";
+					const url = baseUrl + "deletejob";
 					const data = await httpPost(url, args[1]);
 					await interaction.editReply("updated job count is " + data);
 				} else {
